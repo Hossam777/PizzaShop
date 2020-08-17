@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="@dimen/_30sdp" android:height="@dimen/_30sdp" android:drawable="@drawable/black_squared_bg">
+    </item>
+    <item android:top="@dimen/_5sdp" android:left="@dimen/_5sdp" android:gravity="center" android:width="@dimen/_20sdp" android:height="@dimen/_20sdp" android:drawable="@drawable/search">
+    </item>
+</layer-list>

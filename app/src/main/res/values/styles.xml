@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="appbar_text_appearance">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/_17sdp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="navbar_item_text">
+        <item name="android:textSize">@dimen/_13sdp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="tabbar_text">
+        <item name="android:textSize">@dimen/_15sdp</item>
+    </style>
+
+</resources>

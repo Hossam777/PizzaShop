@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/shopItem" android:title="Shop" android:icon="@drawable/ic_shopping_cart"></item>
+        <item android:id="@+id/favItem" android:title="Favourites" android:icon="@drawable/ic_heart"></item>
+        <item android:id="@+id/cartItem" android:title="Cart" android:icon="@drawable/ic_bag"></item>
+        <item android:id="@+id/historyItem" android:title="History" android:icon="@drawable/ic_hourglass"></item>
+        <item android:id="@+id/moreItem" android:title="More" android:icon="@drawable/ic_more"></item>
+    </group>
+</menu>
