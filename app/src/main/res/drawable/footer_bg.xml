@@ -3,6 +3,7 @@
     <item android:top="1dp">
         <shape>
             <stroke android:color="#E5E5E5" android:width="@dimen/_1sdp"></stroke>
+            <solid android:color="@color/colorPrimary"/>
         </shape>
     </item>
 </layer-list>

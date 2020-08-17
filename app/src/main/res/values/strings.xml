@@ -2,7 +2,8 @@
     <string name="app_name">CVProject1</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="footer_txt">Privacy policy and Terms of service 2019</string>
+    <string name="footer_txt">Privacy policy and Terms of service 2020</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image_view_content_description">Pizza Image</string>
 </resources>
