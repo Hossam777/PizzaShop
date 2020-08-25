@@ -2,7 +2,6 @@ package com.example.cvproject1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -12,15 +11,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -28,9 +27,10 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout;
+    private static DrawerLayout drawerLayout;
     private Toolbar toolbar;
-    NavigationView navigationView;
+    static NavigationView navigationView;
+    static TextView cartQuantity;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -45,6 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        Cart.readFromSharedPreference(getApplicationContext());
         toolbar = findViewById(R.id.topAppBar);
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
@@ -52,8 +53,8 @@ public class HomeActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         navigationView.getMenu().findItem(R.id.cartItem).setActionView(R.layout.cart_counter);
-        TextView view = (TextView) navigationView.getMenu().findItem(R.id.cartItem).getActionView();
-        view.setText("7");
+        cartQuantity = (TextView) navigationView.getMenu().findItem(R.id.cartItem).getActionView();
+        cartQuantity.setText(Cart.getFoodList().size() + "");
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
@@ -74,7 +75,8 @@ public class HomeActivity extends AppCompatActivity {
                 }else if(item.getTitle().equals("Favourites")){
 
                 }else if(item.getTitle().equals("Cart")){
-
+                    Intent i = new Intent(getApplicationContext(), BagActivity.class);
+                    startActivity(i);
                 }else if(item.getTitle().equals("History")){
 
                 }else if(item.getTitle().equals("More")){
@@ -121,4 +123,11 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    public static void updateCartQuantity(){
+        cartQuantity.setText(Cart.getFoodList().size() + "");
+    }
+    public static void showSnackbar(){
+        Snackbar snackbar = Snackbar.make(drawerLayout, "Item Added to Cart", Snackbar.LENGTH_LONG);
+        snackbar.show();
+    }
 }

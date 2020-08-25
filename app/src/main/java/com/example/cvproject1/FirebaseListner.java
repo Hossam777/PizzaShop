@@ -14,7 +14,7 @@ public class FirebaseListner {
     public interface FirebaseListners{
         public void onDataChange(ArrayList<FoodUnit> meals);
     }
-    static void getData(String link, final FirebaseListners firebaseListners){
+    public static void getData(String link, final FirebaseListners firebaseListners){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(link);
         myRef.addValueEventListener(new ValueEventListener() {

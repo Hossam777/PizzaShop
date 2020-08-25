@@ -11,18 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cvproject1.R;
 
 
-public class RecyclerViewHolder extends RecyclerView.ViewHolder {
+public class BagRecyclerViewHolder extends RecyclerView.ViewHolder {
     ImageView foodImage;
     TextView name;
-    TextView description;
     TextView price;
-    ImageButton buyBtn;
-    public RecyclerViewHolder(@NonNull View itemView) {
+    TextView quantity;
+    ImageButton deleteBtn;
+    public BagRecyclerViewHolder(@NonNull View itemView) {
         super(itemView);
         foodImage = (ImageView)itemView.findViewById(R.id.foodImage);
         name = (TextView) itemView.findViewById(R.id.foodName);
-        description = (TextView) itemView.findViewById(R.id.foodDescription);
         price = (TextView) itemView.findViewById(R.id.foodPrice);
-        buyBtn = (ImageButton) itemView.findViewById(R.id.buybtn);
+        quantity = (TextView) itemView.findViewById(R.id.quantity);
+        deleteBtn = (ImageButton) itemView.findViewById(R.id.buybtn);
     }
 }

@@ -6,6 +6,7 @@ public class FoodUnit {
     String link;
     String name;
     int price;
+    int quantity;
     public FoodUnit(String description, String id, String imageLink, String name, int price) {
         this.description = description;
         this.id = id;
@@ -31,6 +32,9 @@ public class FoodUnit {
     public int getPrice() {
         return price;
     }
+    public int getQuantity() {
+        return quantity;
+    }
 
     public void setDescription(String description) {
         this.description = description;
@@ -54,5 +58,8 @@ public class FoodUnit {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

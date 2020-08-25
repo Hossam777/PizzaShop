@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_120sdp"
+    android:background="@drawable/card_bg"
+    android:padding="@dimen/_10sdp"
+    android:layout_margin="@dimen/_2sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/foodImage"
+        android:elevation="@dimen/_1sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:scaleType="fitXY"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:contentDescription="@string/image_view_content_description" />
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/_5sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="@dimen/_17sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/foodImage"/>
+    <TextView
+        android:layout_marginLeft="@dimen/_60sdp"
+        android:id="@+id/foodName"
+        android:text="Pizza"
+        android:textStyle="bold"
+        android:textColor="@color/item_name"
+        android:textSize="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintLeft_toRightOf="@+id/quantity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/foodPrice"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center"
+        android:padding="@dimen/_7sdp"
+        android:background="@drawable/rating_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:scaleType="fitXY"
+            android:id="@+id/buybtn"
+            android:tint="@color/colorPrimary"
+            android:src="@drawable/close"
+            android:background="@color/transparent"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

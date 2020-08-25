@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_20sdp"
+    android:background="@color/colorAccent"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_20sdp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent"
+        android:textStyle="italic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/signbg"
+        android:elevation="10dp"
+        android:layout_marginBottom="@dimen/_60sdp"
+        android:text="Pizza Shop"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/_130sdp" />
+    <EditText
+        app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
+        android:id="@+id/mail"
+        android:gravity="center"
+        android:hint="E-Mail"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:textSize="@dimen/_15sdp" />
+    <EditText
+        app:layout_constraintTop_toBottomOf="@+id/mail"
+        android:id="@+id/pass"
+        android:gravity="center"
+        android:hint="Password"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textSize="@dimen/_15sdp"/>
+    <Button
+        android:layout_marginTop="@dimen/_20sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingLeft="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_20sdp"
+        android:text="LogIn"
+        android:textColor="@color/colorAccent"
+        android:backgroundTint="@color/white"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
