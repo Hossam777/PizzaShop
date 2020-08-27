@@ -37,4 +37,7 @@ public class FirebaseListner {
             }
         });
     }
+    public static void writeData(String link, String value){
+
+    }
 }

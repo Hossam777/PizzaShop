@@ -1,6 +1,7 @@
 package com.example.cvproject1;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -9,19 +10,16 @@ import java.util.Arrays;
 
 public class Cart {
     private static ArrayList<FoodUnit> bagFoodItems = new ArrayList<>();
-    private static ArrayList<String> bag = new ArrayList<String>(){
-        @NonNull
-        @Override
-        public String toString() {
-            String bagString = "";
-            for(int i = 0; i < bag.size(); ++i){
-                bagString += bag.get(i);
-                if(i != bag.size() - 1)
-                    bagString += ";";
-            }
-            return bagString;
+    private static String arrayListToString(ArrayList<String> bag){
+        String bagString = "";
+        for(int i = 0; i < bag.size(); ++i){
+            bagString += bag.get(i);
+            if(i != bag.size() - 1)
+                bagString += ";";
         }
-    };
+        return bagString;
+    }
+    private static ArrayList<String> bag = new ArrayList<String>();
     public static void addFoodUnit(FoodUnit foodUnit) {
         boolean newItem = true;
         for(int i = 0; i < bagFoodItems.size(); ++i){
@@ -75,15 +73,17 @@ public class Cart {
         return bagFoodItems;
     }
     public static void writeTOSharedPreference(Context context){
-        SharedPreferenceInterface.writeString(context, SharedPreferenceInterface.bagKey, bag.toString());
+        SharedPreferenceInterface.writeString(context, SharedPreferenceInterface.bagKey, arrayListToString(bag));
     }
     public static void readFromSharedPreference(Context context){
         String bagString = SharedPreferenceInterface.readString(context, SharedPreferenceInterface.bagKey);
         bag = new ArrayList<>();
         bagFoodItems = new ArrayList<>();
-        if(bagString != null && (!bagString.equals("[]"))){
-            bag.addAll(Arrays.asList(bagString.split(";")));
-            for(String item : bag){
+        if(bagString != null && (!bagString.equals(""))){
+            String[] bagList = bagString.split(";");
+            System.out.println(bagString);
+            for(String item : bagList){
+                bag.add(item);
                 bagFoodItems.add(convertStringToFoodItem(item));
             }
         }

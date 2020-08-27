@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -46,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         Cart.readFromSharedPreference(getApplicationContext());
+
         toolbar = findViewById(R.id.topAppBar);
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
@@ -55,11 +57,19 @@ public class HomeActivity extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.cartItem).setActionView(R.layout.cart_counter);
         cartQuantity = (TextView) navigationView.getMenu().findItem(R.id.cartItem).getActionView();
         cartQuantity.setText(Cart.getFoodList().size() + "");
+
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(getApplicationContext(), SharedPreferenceInterface.readString(getApplicationContext(), SharedPreferenceInterface.bagKey), Toast.LENGTH_LONG).show();
+                return false;
+            }
+        });
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,21 +81,16 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 drawerLayout.closeDrawers();
                 if(item.getTitle().equals("Shop")){
-
-                }else if(item.getTitle().equals("Favourites")){
-
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }else if(item.getTitle().equals("Cart")){
                     Intent i = new Intent(getApplicationContext(), BagActivity.class);
                     startActivity(i);
                 }else if(item.getTitle().equals("History")){
 
-                }else if(item.getTitle().equals("More")){
-
                 }
                 return false;
             }
         });
-        //start of activity
     }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
