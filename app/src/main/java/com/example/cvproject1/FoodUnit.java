@@ -7,12 +7,23 @@ public class FoodUnit {
     String name;
     int price;
     int quantity;
-    public FoodUnit(String description, String id, String imageLink, String name, int price) {
+    float rating;
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public FoodUnit(String description, String id, String imageLink, String name, int price, float rating) {
         this.description = description;
         this.id = id;
         this.link = imageLink;
         this.name = name;
         this.price = price;
+        this.rating = rating;
     }
     public FoodUnit() { }
 

@@ -82,6 +82,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/_20sdp"
         android:text="SignUp"
+        android:onClick="submitSignUp"
         android:textColor="@color/colorAccent"
         android:backgroundTint="@color/white"/>
 

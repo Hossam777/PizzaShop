@@ -43,9 +43,9 @@ public class BagRecyclerViewCustomAdapter extends RecyclerView.Adapter<BagRecycl
                 Cart.writeTOSharedPreference(context);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, getItemCount());
-                HomeActivity.updateCartQuantity();
-                BagActivity.updateCartQuantity();
-                BagActivity.showSnackbar();
+                System.out.println(context);
+                ((BaseActivity) context).updateCartQuantity();
+                ((BaseActivity) context).showSnackBar("Item Removed");
             }
         });
     }

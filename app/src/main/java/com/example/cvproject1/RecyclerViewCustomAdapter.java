@@ -36,13 +36,14 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
         holder.name.setText(meals.get(position).getName());
         holder.description.setText(meals.get(position).getDescription());
         holder.price.setText(meals.get(position).getPrice() + "$");
+        holder.rating.setText(meals.get(position).getRating() + "");
         holder.buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Cart.addFoodUnit(meals.get(position));
-                HomeActivity.updateCartQuantity();
                 Cart.writeTOSharedPreference(context);
-                HomeActivity.showSnackbar();
+                ((BaseActivity) context).updateCartQuantity();
+                ((BaseActivity) context).showSnackBar("Item Added to Cart");
             }
         });
     }

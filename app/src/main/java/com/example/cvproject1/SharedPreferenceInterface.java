@@ -10,6 +10,8 @@ public class SharedPreferenceInterface {
     public static final String nameKey = "nameKey";
     public static final String phoneKey = "phoneKey";
     public static final String emailKey = "emailKey";
+    public static final String passKey = "passKey";
+    public static final String loggedInKey = "loggedInKey";
     public static void writeString(Context context, String key, String value){
         SharedPreferences sharedPreferences = context.getSharedPreferences(PIZZA_SHOP_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

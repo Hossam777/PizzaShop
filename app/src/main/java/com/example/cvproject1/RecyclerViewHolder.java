@@ -16,6 +16,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     TextView name;
     TextView description;
     TextView price;
+    TextView rating;
     ImageButton buyBtn;
     public RecyclerViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -23,6 +24,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         name = (TextView) itemView.findViewById(R.id.foodName);
         description = (TextView) itemView.findViewById(R.id.foodDescription);
         price = (TextView) itemView.findViewById(R.id.foodPrice);
+        rating = (TextView) itemView.findViewById(R.id.foodRating);
         buyBtn = (ImageButton) itemView.findViewById(R.id.buybtn);
     }
 }

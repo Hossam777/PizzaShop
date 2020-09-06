@@ -62,6 +62,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/_20sdp"
         android:text="LogIn"
+        android:onClick="submitLogIn"
         android:textColor="@color/colorAccent"
         android:backgroundTint="@color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
