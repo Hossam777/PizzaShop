@@ -24,6 +24,16 @@
         android:elevation="10dp"
         android:layout_marginBottom="@dimen/_60sdp"
         android:text="Pizza Shop"/>
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/warningText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wrong Phone or Password !!!"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTop"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="center"
+        android:textColor="@color/white"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTop"
         android:layout_width="wrap_content"
@@ -32,16 +42,16 @@
         app:layout_constraintGuide_begin="@dimen/_130sdp" />
     <EditText
         app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
-        android:id="@+id/mail"
+        android:id="@+id/phone"
         android:gravity="center"
-        android:hint="E-Mail"
+        android:hint="Phone"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         android:textSize="@dimen/_15sdp" />
     <EditText
-        app:layout_constraintTop_toBottomOf="@+id/mail"
+        app:layout_constraintTop_toBottomOf="@+id/phone"
         android:id="@+id/pass"
         android:gravity="center"
         android:hint="Password"

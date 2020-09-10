@@ -27,6 +27,7 @@ public class BaseActivity extends AppCompatActivity {
     protected NavigationView navigationView;
     protected TextView cartQuantity;
     protected ViewStub viewStub;
+    protected TextView userTextName;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -45,14 +46,20 @@ public class BaseActivity extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.cartItem).setActionView(R.layout.cart_counter);
         cartQuantity = (TextView) navigationView.getMenu().findItem(R.id.cartItem).getActionView();
         Cart.readFromSharedPreference(getApplicationContext());
-        if(User.loadUserDataIfLoggedIn(getApplicationContext())){
-            ((TextView)navigationView.getHeaderView(0).findViewById(R.id.navigationDrawerHeaderUserName)).setText(User.getUserName().toUpperCase());
+        userTextName = ((TextView)navigationView.getHeaderView(0).findViewById(R.id.navigationDrawerHeaderUserName));
+        if(UserHandler.loadUserDataIfLoggedIn(getApplicationContext())){
+            userTextName.setText(UserHandler.getLoggedInUser().getUserName().toUpperCase());
         }
         cartQuantity.setText(Cart.getFoodList().size() + "");
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(getApplicationContext(), SharedPreferenceInterface.readString(getApplicationContext(), SharedPreferenceInterface.bagKey), Toast.LENGTH_LONG).show();
+                FirebaseListener.loadUser("010690998520", new FirebaseListener.UserInterface() {
+                    @Override
+                    public void onUserReceived(User user) {
+                        Toast.makeText(BaseActivity.this, "Result : " + user, Toast.LENGTH_LONG).show();
+                    }
+                });
                 return false;
             }
         });
@@ -84,8 +91,8 @@ public class BaseActivity extends AppCompatActivity {
                 return false;
             }
         });
-        if(User.loadUserDataIfLoggedIn(getApplicationContext())){
-            ((TextView)navigationView.getHeaderView(0).findViewById(R.id.navigationDrawerHeaderUserName)).setText(User.getUserName().toUpperCase());
+        if(UserHandler.loadUserDataIfLoggedIn(getApplicationContext())){
+            ((TextView)navigationView.getHeaderView(0).findViewById(R.id.navigationDrawerHeaderUserName)).setText(UserHandler.getLoggedInUser().getUserName().toUpperCase());
         }
         viewStub = findViewById(R.id.content_frame);
     }

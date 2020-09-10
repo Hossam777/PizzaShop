@@ -29,7 +29,7 @@ public class PizzaFragment extends Fragment {
         recyclerView = (RecyclerView) root.findViewById(R.id.pizzaRecycler);
         lLayout = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(lLayout);
-        FirebaseListner.getData("Food/Pizza", new FirebaseListner.FirebaseListners() {
+        FirebaseListener.getData("Food/Pizza", new FirebaseListener.MealsInterface() {
             @Override
             public void onDataChange(final ArrayList<FoodUnit> meals) {
                 if(meals != null){
