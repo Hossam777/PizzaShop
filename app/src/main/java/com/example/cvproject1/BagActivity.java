@@ -27,4 +27,12 @@ public class BagActivity extends BaseActivity {
         BagRecyclerViewCustomAdapter rcAdapter = new BagRecyclerViewCustomAdapter(this, meals);
         recyclerView.setAdapter(rcAdapter);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        final ArrayList<FoodUnit> meals = Cart.getFoodList();
+        BagRecyclerViewCustomAdapter rcAdapter = new BagRecyclerViewCustomAdapter(this, meals);
+        recyclerView.setAdapter(rcAdapter);
+    }
 }

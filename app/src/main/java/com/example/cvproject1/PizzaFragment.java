@@ -33,7 +33,7 @@ public class PizzaFragment extends Fragment {
             @Override
             public void onDataChange(final ArrayList<FoodUnit> meals) {
                 if(meals != null){
-                    RecyclerViewCustomAdapter rcAdapter = new RecyclerViewCustomAdapter(getContext(), meals);
+                    RecyclerViewCustomAdapter rcAdapter = new RecyclerViewCustomAdapter(getContext(), meals, BaseActivity.class);
                     recyclerView.setAdapter(rcAdapter);
                 }
             }

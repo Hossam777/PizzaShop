@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/android_search_ConstraintLayout"
+    android:animateLayoutChanges="true"
+    android:background="@color/colorAccent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/searchOptionsConstraintLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_text"
+            android:hint="Name"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_17sdp"
+            android:textColor="@color/colorAccent"
+            android:inputType="text" />
+
+        <RadioGroup
+            android:layout_marginTop="@dimen/_5sdp"
+            android:id="@+id/radio_group"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/search_text">
+
+            <RadioButton
+                android:paddingLeft="@dimen/_12sdp"
+                android:paddingRight="@dimen/_12sdp"
+                android:textSize="@dimen/_17sdp"
+                android:background="@drawable/food_type_radiobtn"
+                android:checked="true"
+                android:gravity="center"
+                android:button="@null"
+                android:id="@+id/allRadioButton"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="wrap_content"
+                android:text="ALL" />
+
+            <RadioButton
+                android:paddingLeft="@dimen/_12sdp"
+                android:paddingRight="@dimen/_12sdp"
+                android:background="@drawable/food_type_radiobtn"
+                android:gravity="center"
+                android:textSize="@dimen/_17sdp"
+                android:button="@null"
+                android:id="@+id/pizzaRadioButton"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="wrap_content"
+                android:text="Pizza" />
+
+            <RadioButton
+                android:paddingLeft="@dimen/_12sdp"
+                android:paddingRight="@dimen/_12sdp"
+                android:background="@drawable/food_type_radiobtn"
+                android:gravity="center"
+                android:textSize="@dimen/_17sdp"
+                android:button="@null"
+                android:id="@+id/pastaRadioButton"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="wrap_content"
+                android:text="Pasta" />
+
+            <RadioButton
+                android:paddingLeft="@dimen/_12sdp"
+                android:paddingRight="@dimen/_12sdp"
+                android:background="@drawable/food_type_radiobtn"
+                android:gravity="center"
+                android:textSize="@dimen/_17sdp"
+                android:button="@null"
+                android:id="@+id/riceRadioButton"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="wrap_content"
+                android:text="Rice" />
+        </RadioGroup>
+        <LinearLayout
+            android:layout_marginTop="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:id="@+id/ratings_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/radio_group">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/black"
+                android:text="Minimum Rating: "/>
+            <NumberPicker
+                android:id="@+id/ratingNumberPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_50sdp"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recyclerConstraintLayout"
+        app:layout_constraintTop_toBottomOf="@id/searchOptionsConstraintLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="@dimen/_33sdp"
+            android:id="@+id/searchRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/search_settings_icon"
+            android:layout_marginRight="@dimen/_5sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:src="@drawable/gear_icon"
+            android:tint="#000A3E"
+            android:onClick="swipe_settings_icon"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.cvproject1;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,14 @@ import java.util.ArrayList;
 
 public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     ArrayList<FoodUnit> meals;
+    Class activityClass;
     private LayoutInflater mInflater;
     Context context;
-    public RecyclerViewCustomAdapter(Context context, ArrayList<FoodUnit> meals) {
+    public RecyclerViewCustomAdapter(Context context, ArrayList<FoodUnit> meals, Class activityClass) {
         this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.meals = meals;
+        this.activityClass = activityClass;
     }
 
     @NonNull
@@ -42,8 +45,12 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
             public void onClick(View v) {
                 Cart.addFoodUnit(meals.get(position));
                 Cart.writeTOSharedPreference(context);
-                ((BaseActivity) context).updateCartQuantity();
-                ((BaseActivity) context).showSnackBar("Item Added to Cart");
+                if(activityClass == BaseActivity.class){
+                    ((BaseActivity) context).updateCartQuantity();
+                    ((BaseActivity) context).showSnackBar("Item Added to Cart");
+                }else if(activityClass == SearchActivity.class){
+                    ((SearchActivity) context).showSnackBar("Item Added to Cart");
+                }
             }
         });
     }

@@ -54,12 +54,7 @@ public class BaseActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                FirebaseListener.loadUser("010690998520", new FirebaseListener.UserInterface() {
-                    @Override
-                    public void onUserReceived(User user) {
-                        Toast.makeText(BaseActivity.this, "Result : " + user, Toast.LENGTH_LONG).show();
-                    }
-                });
+                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                 return false;
             }
         });
