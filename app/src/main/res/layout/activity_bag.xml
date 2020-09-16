@@ -21,7 +21,7 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior">
     android:id="@+id/bagRecycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/_50sdp"
+    android:paddingBottom="@dimen/_80sdp"
     android:scrollbars="vertical"/>
 
     <Button
@@ -36,6 +36,7 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior">
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/_15sdp"
+        android:onClick="checkOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_60sdp"/>
