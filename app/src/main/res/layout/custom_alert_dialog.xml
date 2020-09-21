@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:padding="20dp"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp">
+
+    <TextView
+        android:id="@+id/alertTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20dp"
+        android:textColor="@color/colorSecondary"
+        android:text="Title"/>
+    <TextView
+        android:id="@+id/alertMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/alertTitle"
+        android:textSize="15dp"
+        android:text="Message"
+        android:textColor="@color/colorSecondary"/>
+    <Button
+        android:id="@+id/alertNegativeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/alertMessage"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Close"
+        android:backgroundTint="@color/colorSecondary"/>
+    <Button
+        android:id="@+id/alertPositiveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/alertMessage"
+        app:layout_constraintRight_toLeftOf="@+id/alertNegativeButton"
+        android:visibility="invisible"
+        android:layout_marginRight="10dp"
+        android:text="Go"
+        android:backgroundTint="@color/colorSecondary"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

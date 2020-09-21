@@ -8,7 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cvproject1.R;
 
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {

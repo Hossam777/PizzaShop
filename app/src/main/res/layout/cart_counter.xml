@@ -6,6 +6,6 @@
     android:textSize="@dimen/_10sdp"
     android:textStyle="bold"
     android:gravity="center"
-    android:textColor="@color/colorPrimaryDark"
+    android:textColor="@color/colorFourth"
     android:background="@drawable/white_oval">
 </TextView>

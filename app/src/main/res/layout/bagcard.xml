@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:minHeight="@dimen/_120sdp"
     android:background="@drawable/card_bg"
+    android:backgroundTint="@color/colorPrimary"
     android:padding="@dimen/_10sdp"
     android:layout_margin="@dimen/_2sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -26,6 +27,7 @@
         android:layout_marginLeft="@dimen/_5sdp"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="@dimen/_17sdp"
+        android:textColor="@color/colorTertiary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/foodImage"/>
     <TextView
@@ -33,7 +35,7 @@
         android:id="@+id/foodName"
         android:text="Pizza"
         android:textStyle="bold"
-        android:textColor="@color/item_name"
+        android:textColor="@color/colorFourth"
         android:textSize="@dimen/_15sdp"
         android:layout_marginStart="@dimen/_10sdp"
         app:layout_constraintLeft_toRightOf="@+id/quantity"
@@ -47,7 +49,7 @@
         android:id="@+id/foodPrice"
         android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/colorFourth"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,12 +62,13 @@
         android:gravity="center"
         android:padding="@dimen/_7sdp"
         android:background="@drawable/rating_bg"
+        android:backgroundTint="@color/colorSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageButton
             android:scaleType="fitXY"
             android:id="@+id/buybtn"
-            android:tint="@color/colorPrimary"
+            android:tint="@color/colorFourth"
             android:src="@drawable/close"
             android:background="@color/transparent"
             android:layout_width="@dimen/_10sdp"

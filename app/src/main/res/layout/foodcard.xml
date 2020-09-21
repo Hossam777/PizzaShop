@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_2sdp"
     android:paddingBottom="@dimen/_15sdp"
-    android:background="@drawable/card_bg">
+    android:background="@drawable/card_bg"
+    android:backgroundTint="@color/colorPrimary">
 
     <ImageView
         android:id="@+id/foodImage"
@@ -27,7 +28,7 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:paddingLeft="@dimen/_20sdp"
         android:text="Pizza"
-        android:textColor="@color/item_name"
+        android:textColor="@color/colorFourth"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -51,18 +52,20 @@
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginBottom="@dimen/_3sdp"
             android:background="@drawable/item_description_bg"
+            android:textColor="@color/colorFourth"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
             android:id="@+id/foodDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/_10sdp"
-            android:textColor="@color/item_description"
+            android:textColor="@color/colorFourth"
             android:textDirection="ltr"
-            android:textSize="@dimen/_15sdp"
-            android:textStyle="italic"
+            android:textSize="@dimen/_13sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -73,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:textColor="@color/black"
+        android:textColor="@color/colorFourth"
         android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/first_section_barrier"
@@ -85,6 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_20sdp"
         android:background="@drawable/rating_bg"
+        android:backgroundTint="@color/colorSecondary"
         android:gravity="center"
         android:padding="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@id/first_section_barrier"
@@ -97,14 +101,15 @@
             android:layout_height="@dimen/_20sdp"
             android:background="@color/transparent"
             android:scaleType="fitXY"
-            android:src="@drawable/bag"
-            android:tint="@color/colorPrimary" />
+            android:src="@drawable/ic_bag"
+            android:tint="@color/colorFourth" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rating_bg"
+        android:backgroundTint="@color/colorSecondary"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/_10sdp"
@@ -121,8 +126,8 @@
             android:layout_height="@dimen/_20sdp"
             android:layout_margin="@dimen/_2sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:src="@drawable/star"
-            android:tint="@color/colorPrimary" />
+            android:src="@drawable/ic_baseline_star"
+            android:tint="@color/colorFourth" />
 
         <TextView
             android:id="@+id/foodRating"
@@ -131,7 +136,7 @@
             android:layout_margin="@dimen/_2sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:text="4.9"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorFourth"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold" />
     </LinearLayout>

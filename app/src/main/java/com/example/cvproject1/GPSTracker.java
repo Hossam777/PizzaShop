@@ -6,9 +6,7 @@ package com.example.cvproject1;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Service;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -60,6 +58,7 @@ public abstract class GPSTracker extends Service implements LocationListener, Ac
         try {
             if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 requestLocationPermission();
+                return null;
             }
             locationManager = (LocationManager) activity
                     .getSystemService(LOCATION_SERVICE);
@@ -143,12 +142,15 @@ public abstract class GPSTracker extends Service implements LocationListener, Ac
             permissionsDenied();
         }else if(ACCESS_LOCATION_PERMISSION_REQUEST_CODE == requestCode){
             getLocation();
+            afterPermissionsGranted();
         }
     }
 
     public abstract void  permissionsDenied();
     public abstract void  noInternetConnection();
     public abstract void  GPSIsOff();
+    public abstract void  afterPermissionsGranted();
+
 
     /**
      * Stop using GPS listener
@@ -197,31 +199,19 @@ public abstract class GPSTracker extends Service implements LocationListener, Ac
      * On pressing Settings button will lauch Settings Options
      * */
     public void showSettingsAlert(){
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
-
-        // Setting Dialog Title
-        alertDialog.setTitle("GPS is settings");
-
-        // Setting Dialog Message
-        alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
-
-        // On pressing Settings button
-        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog,int which) {
+        CustomAlertDialog customAlertDialog = new CustomAlertDialog(activity, "GPS is settings", "GPS is not enabled. Do you want to go to settings menu?", "Settings", new CustomAlertDialog.CallbackPositive() {
+            @Override
+            public void doPositive() {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 activity.startActivity(intent);
             }
-        });
 
-        // on pressing cancel button
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
+            @Override
+            public void doNegative() {
+
             }
         });
-
-        // Showing Alert Message
-        alertDialog.show();
+        customAlertDialog.show();
     }
 
     @Override

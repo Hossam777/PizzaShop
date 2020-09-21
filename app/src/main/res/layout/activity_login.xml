@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_20sdp"
-    android:background="@color/colorAccent"
+    android:background="@color/colorPrimary"
     tools:context=".LoginActivity">
 
     <TextView
@@ -16,11 +16,12 @@
         android:textSize="@dimen/_20sdp"
         android:gravity="center"
         android:textAllCaps="true"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorFourth"
         android:textStyle="italic"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/signbg"
+        android:backgroundTint="@color/colorSecondary"
         android:elevation="10dp"
         android:layout_marginBottom="@dimen/_60sdp"
         android:text="Pizza Shop"/>
@@ -45,7 +46,7 @@
         android:id="@+id/phone"
         android:gravity="center"
         android:hint="Phone"
-        android:textColor="@color/white"
+        android:textColor="@color/colorFourth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
@@ -55,7 +56,7 @@
         android:id="@+id/pass"
         android:gravity="center"
         android:hint="Password"
-        android:textColor="@color/white"
+        android:textColor="@color/colorFourth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -73,6 +74,6 @@
         android:textSize="@dimen/_20sdp"
         android:text="LogIn"
         android:onClick="submitLogIn"
-        android:textColor="@color/colorAccent"
-        android:backgroundTint="@color/white"/>
+        android:textColor="@color/colorFourth"
+        android:backgroundTint="@color/colorSecondary"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

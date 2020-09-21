@@ -4,6 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
 tools:context=".ProfileActivity">
 
     <EditText
@@ -54,8 +55,8 @@ tools:context=".ProfileActivity">
         android:textSize="@dimen/_20sdp"
         android:text="Update Profile"
         android:onClick="submitUpdate"
-        android:textColor="@color/colorAccent"
-        android:backgroundTint="@color/white"/>
+        android:textColor="@color/colorSecondary"
+        android:backgroundTint="@color/colorFourth"/>
 
     <Button
         android:visibility="gone"
@@ -72,8 +73,8 @@ tools:context=".ProfileActivity">
         android:textSize="@dimen/_20sdp"
         android:text="Logout"
         android:onClick="logout"
-        android:textColor="@color/colorAccent"
-        android:backgroundTint="@color/white"/>
+        android:textColor="@color/colorSecondary"
+        android:backgroundTint="@color/colorFourth"/>
 
     <Button
         android:layout_marginTop="@dimen/_40sdp"
@@ -89,8 +90,8 @@ tools:context=".ProfileActivity">
         android:textSize="@dimen/_20sdp"
         android:text="Login"
         android:onClick="login"
-        android:textColor="@color/colorAccent"
-        android:backgroundTint="@color/white"/>
+        android:textColor="@color/colorFourth"
+        android:backgroundTint="@color/colorSecondary"/>
     <Button
         android:layout_marginTop="@dimen/_40sdp"
     android:id="@+id/signUpBtn"
@@ -105,7 +106,7 @@ tools:context=".ProfileActivity">
     android:textSize="@dimen/_20sdp"
     android:text="SignUp"
     android:onClick="signUp"
-    android:textColor="@color/colorAccent"
-    android:backgroundTint="@color/white"/>
+    android:textColor="@color/colorFourth"
+    android:backgroundTint="@color/colorSecondary"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

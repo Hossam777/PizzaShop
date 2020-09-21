@@ -6,12 +6,13 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+        <item name="android:textColorPrimary">@color/colorFourth</item>
     </style>
-    <style name="appbar_text_appearance">
-        <item name="android:layout_gravity">center</item>
-        <item name="android:textSize">@dimen/_17sdp</item>
-        <item name="android:textStyle">bold</item>
+    <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">@color/colorFourth</item>
     </style>
+
     <style name="navbar_item_text">
         <item name="android:textSize">@dimen/_13sdp</item>
         <item name="android:textStyle">bold</item>

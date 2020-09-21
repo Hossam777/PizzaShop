@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/android_search_ConstraintLayout"
     android:animateLayoutChanges="true"
-    android:background="@color/colorAccent"
+    android:background="@color/colorSecondary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
@@ -23,7 +23,7 @@
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="@dimen/_17sdp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorFourth"
             android:inputType="text" />
 
         <RadioGroup
@@ -41,6 +41,7 @@
                 android:textSize="@dimen/_17sdp"
                 android:background="@drawable/food_type_radiobtn"
                 android:checked="true"
+                android:textColor="@color/colorFourth"
                 android:gravity="center"
                 android:button="@null"
                 android:id="@+id/allRadioButton"
@@ -54,6 +55,7 @@
                 android:background="@drawable/food_type_radiobtn"
                 android:gravity="center"
                 android:textSize="@dimen/_17sdp"
+                android:textColor="@color/colorFourth"
                 android:button="@null"
                 android:id="@+id/pizzaRadioButton"
                 android:layout_width="@dimen/_70sdp"
@@ -67,6 +69,7 @@
                 android:gravity="center"
                 android:textSize="@dimen/_17sdp"
                 android:button="@null"
+                android:textColor="@color/colorFourth"
                 android:id="@+id/pastaRadioButton"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="wrap_content"
@@ -78,6 +81,7 @@
                 android:background="@drawable/food_type_radiobtn"
                 android:gravity="center"
                 android:textSize="@dimen/_17sdp"
+                android:textColor="@color/colorFourth"
                 android:button="@null"
                 android:id="@+id/riceRadioButton"
                 android:layout_width="@dimen/_70sdp"
@@ -97,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_14sdp"
-                android:textColor="@color/black"
+                android:textColor="@color/colorFourth"
                 android:text="Minimum Rating: "/>
             <NumberPicker
                 android:id="@+id/ratingNumberPicker"
@@ -109,6 +113,8 @@
         android:id="@+id/recyclerConstraintLayout"
         app:layout_constraintTop_toBottomOf="@id/searchOptionsConstraintLayout"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingTop="@dimen/_10sdp"
+        app:layout_goneMarginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
@@ -123,8 +129,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:src="@drawable/gear_icon"
-            android:tint="#000A3E"
+            android:src="@drawable/roller"
             android:onClick="swipe_settings_icon"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"/>

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFF</color>
+    <color name="colorPrimary">#557571</color>
+    <color name="colorSecondary">#d49a89</color>
+    <color name="colorTertiary">#f7d1ba</color>
+    <color name="colorFourth">#f4f4f4</color>
+
     <color name="colorPrimaryDark">#231E36</color>
     <color name="colorAccent">#FC4C4C</color>
-    <color name="black">#000</color>
     <color name="transparent">#00000000</color>
-    <color name="item_description">#231E36</color>
-    <color name="item_name">#231E36</color>
-    <color name="card_bg_color">#F5F5F5</color>
     <color name="white">#FFF</color>
     <color name="darkBlue">#01132D</color>
+
 </resources>

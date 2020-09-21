@@ -7,14 +7,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -47,6 +45,12 @@ public class BaseActivity extends AppCompatActivity {
         cartQuantity = (TextView) navigationView.getMenu().findItem(R.id.cartItem).getActionView();
         Cart.readFromSharedPreference(getApplicationContext());
         userTextName = ((TextView)navigationView.getHeaderView(0).findViewById(R.id.navigationDrawerHeaderUserName));
+        userTextName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            }
+        });
         if(UserHandler.loadUserDataIfLoggedIn(getApplicationContext())){
             userTextName.setText(UserHandler.getLoggedInUser().getUserName().toUpperCase());
         }

@@ -9,7 +9,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/pizza"
-        android:roundIcon="@mipmap/pizza"
+        android:roundIcon="@mipmap/pizza_rounded"
         android:supportsRtl="true"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">

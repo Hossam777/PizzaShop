@@ -1,12 +1,8 @@
 package com.example.cvproject1;
 
 import android.content.Context;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Cart {
     private static ArrayList<FoodUnit> bagFoodItems = new ArrayList<>();
@@ -79,7 +75,7 @@ public class Cart {
         String bagString = SharedPreferenceInterface.readString(context, SharedPreferenceInterface.bagKey);
         bag = new ArrayList<>();
         bagFoodItems = new ArrayList<>();
-        if(bagString != null && (!bagString.equals(""))){
+        if(bagString != null && (!bagString.equals("")) && (!bagString.equals("[]"))){
             String[] bagList = bagString.split(";");
             System.out.println(bagString);
             for(String item : bagList){
