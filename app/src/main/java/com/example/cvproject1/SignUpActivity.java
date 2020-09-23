@@ -17,10 +17,6 @@ public class SignUpActivity extends AppCompatActivity {
     EditText name;
     EditText phone;
     TextView headWarningText;
-    TextView mailWarningText;
-    TextView passWarningText;
-    TextView nameWarningText;
-    TextView phoneWarningText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +27,11 @@ public class SignUpActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         phone = findViewById(R.id.phone);
         headWarningText = findViewById(R.id.headWarningText);
-        mailWarningText = findViewById(R.id.mailWarningText);
-        passWarningText = findViewById(R.id.passWarningText);
-        nameWarningText = findViewById(R.id.nameWarningText);
-        phoneWarningText = findViewById(R.id.phoneWarningText);
         mail.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
-                if(validateMail(s + "")){
-                   mailWarningText.setText("");
-                }else{
-                    mailWarningText.setText("Wrong Mail");
+                if(!validateMail(s + "")){
+                    mail.setError("Wrong Mail");
                 }
             }
 
@@ -58,10 +48,8 @@ public class SignUpActivity extends AppCompatActivity {
         pass.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
-                if(validatePass(s + "")){
-                    passWarningText.setText("");
-                }else{
-                    passWarningText.setText("Password at least must be 8 Characters");
+                if(!validatePass(s + "")){
+                    pass.setError("Password at least must be 8 Characters");
                 }
             }
 
@@ -79,17 +67,16 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(validatePhone(s + "")){
-                    phoneWarningText.setText("");
                     FirebaseListener.loadUser(s + "", new FirebaseListener.UserInterface() {
                         @Override
                         public void onUserReceived(User user) {
                             if(user != null){
-                                phoneWarningText.setText("This Phone is already SignedUp");
+                                phone.setError("This Phone is already SignedUp");
                             }
                         }
                     });
                 }else{
-                    phoneWarningText.setText("Wrong Phone Number");
+                    phone.setError("Wrong Phone Number");
                 }
             }
 
@@ -106,10 +93,8 @@ public class SignUpActivity extends AppCompatActivity {
         name.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
-                if(validateName(s + "")){
-                    nameWarningText.setText("");
-                }else{
-                    nameWarningText.setText("Name must be at least 2 Characters");
+                if(!validateName(s + "")){
+                    name.setError("Name must be at least 2 Characters");
                 }
             }
 

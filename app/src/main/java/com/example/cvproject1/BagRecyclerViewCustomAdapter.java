@@ -46,6 +46,7 @@ public class BagRecyclerViewCustomAdapter extends RecyclerView.Adapter<BagRecycl
                 System.out.println(context);
                 ((BaseActivity) context).updateCartQuantity();
                 ((BaseActivity) context).showSnackBar("Item Removed");
+                ((BagActivity)context).updateUI(meals);
             }
         });
     }

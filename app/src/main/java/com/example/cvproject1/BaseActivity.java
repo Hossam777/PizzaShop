@@ -7,7 +7,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +18,8 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.net.InetAddress;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -58,7 +62,11 @@ public class BaseActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                if(item.getItemId() == R.id.actionbar_cart && !activityName.equals("Cart")){
+                    startActivity(new Intent(getApplicationContext(), BagActivity.class));
+                }else if(item.getItemId() == R.id.actionbar_searchID){
+                    startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                }
                 return false;
             }
         });
@@ -81,7 +89,7 @@ public class BaseActivity extends AppCompatActivity {
                 }else if(item.getTitle().equals("Cart")){
                     startActivity(new Intent(getApplicationContext(), BagActivity.class));
                 }else if(item.getTitle().equals("History")){
-                    //startActivity(new Intent(getApplicationContext(), BagActivity.class));
+                    startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
                 }else if(item.getTitle().equals("Profile")){
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 }
@@ -105,5 +113,15 @@ public class BaseActivity extends AppCompatActivity {
     public void showSnackBar(String message) {
         Snackbar snackbar = Snackbar.make(drawerLayout, message, Snackbar.LENGTH_LONG);
         snackbar.show();
+    }
+    static boolean isNetworkConnected() {
+        try {
+            InetAddress inetAddress = InetAddress.getByName("google.com");
+            //You can replace it with your name
+            return !inetAddress.equals("");
+
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

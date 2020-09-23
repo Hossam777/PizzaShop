@@ -77,7 +77,7 @@ public class BagActivity extends BaseActivity {
         }
     }
 
-    private void updateUI(ArrayList<FoodUnit> meals){
+    public void updateUI(ArrayList<FoodUnit> meals){
         totalMoney = 0;
         for(FoodUnit meal : meals){
             totalMoney += meal.getPrice() * meal.getQuantity();

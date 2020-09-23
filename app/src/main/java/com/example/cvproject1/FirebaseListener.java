@@ -17,6 +17,9 @@ public class FirebaseListener {
     public interface UserInterface {
         public void onUserReceived(User user);
     }
+    public interface ResetsInterface {
+        public void onResetsReceived(ArrayList<Reset> resets);
+    }
     public static void getData(String link, final MealsInterface mealsInterface){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(link);
@@ -63,5 +66,35 @@ public class FirebaseListener {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Users/" + user.getUserPhone());
         myRef.setValue(user);
+    }
+
+
+    public static void loadResets(String link, final ResetsInterface resetsInterface){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(link);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Reset> resets = new ArrayList<>();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Reset reset = postSnapshot.getValue(Reset.class);
+                    resets.add(reset);
+                }
+                resetsInterface.onResetsReceived(resets);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("Error:", "Failed to read value.", error.toException());
+                resetsInterface.onResetsReceived(null);
+            }
+        });
+    }
+
+    public static void addReset(Reset reset, String phone){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Resets/" + phone + "/" + reset.getBarCode());
+        myRef.setValue(reset);
     }
 }

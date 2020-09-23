@@ -47,9 +47,11 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
     Location shopLocation;
     TextView locationAddress;
     TextView subtotalMoney;
-    TextView clientName;
     TextView phone;
+    TextView clientName;
     TextView estTime;
+    TextView barCodeTextView;
+    String barcode;
     String[] days = new String[] { "SAT", "SUN", "MON", "TUE", "WED", "THU", "FRI" };
 
 
@@ -60,10 +62,13 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_checkout);
         locationAddress = findViewById(R.id.locationAddress);
         requestQueue = Volley.newRequestQueue(this);
+        barcode = getAlphaNumericString(10);
         mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
         subtotalMoney = findViewById(R.id.subtotalMoney);
         subtotalMoney.setText(getIntent().getDoubleExtra("totalMoney", 0) + "");
         clientName = findViewById(R.id.clientName);
+        barCodeTextView = findViewById(R.id.barCode);
+        barCodeTextView.setText(barcode);
         clientName.setText(UserHandler.getLoggedInUser().getUserName());
         phone = findViewById(R.id.phone);
         phone.setText(UserHandler.getLoggedInUser().getUserPhone());
@@ -213,6 +218,25 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     public void confirmBtn(View view) {
+        FirebaseListener.addReset(new Reset(locationAddress.getText() + "", subtotalMoney.getText() + "", UserHandler.getLoggedInUser().getUserPhone(), barcode), UserHandler.getLoggedInUser().getUserPhone());
+        Cart.clearCart();
+        Cart.writeTOSharedPreference(getApplicationContext());
+        finish();
+    }
+
+    private String getAlphaNumericString(int n)
+    {
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789";
+        StringBuilder sb = new StringBuilder(n);
+        for (int i = 0; i < n; i++) {
+            int index
+                    = (int)(AlphaNumericString.length()
+                    * Math.random());
+            sb.append(AlphaNumericString
+                    .charAt(index));
+        }
+        return sb.toString();
     }
 
 }

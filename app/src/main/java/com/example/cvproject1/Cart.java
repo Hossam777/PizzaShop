@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Cart {
     private static ArrayList<FoodUnit> bagFoodItems = new ArrayList<>();
+    private static ArrayList<String> bag = new ArrayList<String>();
+
     private static String arrayListToString(ArrayList<String> bag){
         String bagString = "";
         for(int i = 0; i < bag.size(); ++i){
@@ -15,7 +17,6 @@ public class Cart {
         }
         return bagString;
     }
-    private static ArrayList<String> bag = new ArrayList<String>();
     public static void addFoodUnit(FoodUnit foodUnit) {
         boolean newItem = true;
         for(int i = 0; i < bagFoodItems.size(); ++i){
@@ -35,6 +36,10 @@ public class Cart {
             foodUnit.setQuantity(1);
             bagFoodItems.add(foodUnit);
         }
+    }
+    public static void clearCart(){
+        bagFoodItems.clear();
+        bag.clear();
     }
     public static void removeFoodUnit(String id) {
         for(int i = 0; i < bagFoodItems.size(); ++i){

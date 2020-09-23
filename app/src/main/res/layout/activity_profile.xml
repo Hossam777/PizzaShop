@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorSecondary"
 tools:context=".ProfileActivity">
 
     <EditText
@@ -91,7 +91,7 @@ tools:context=".ProfileActivity">
         android:text="Login"
         android:onClick="login"
         android:textColor="@color/colorFourth"
-        android:backgroundTint="@color/colorSecondary"/>
+        android:backgroundTint="@color/colorPrimary"/>
     <Button
         android:layout_marginTop="@dimen/_40sdp"
     android:id="@+id/signUpBtn"
@@ -107,6 +107,6 @@ tools:context=".ProfileActivity">
     android:text="SignUp"
     android:onClick="signUp"
     android:textColor="@color/colorFourth"
-    android:backgroundTint="@color/colorSecondary"/>
+    android:backgroundTint="@color/colorPrimary"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
