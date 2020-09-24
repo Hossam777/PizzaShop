@@ -5,9 +5,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -27,6 +27,11 @@ public class HomeActivity extends BaseActivity {
         super.updateView(R.layout.activity_home);
         activityName = "Shop";
 
+        ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Downloading");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setIndeterminate(true);
+        progress.show();
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -40,6 +45,7 @@ public class HomeActivity extends BaseActivity {
                     @Override
                     public void run() {
                         setupViewPager();
+                        progress.dismiss();
                     }
                 });
             }
@@ -89,5 +95,4 @@ public class HomeActivity extends BaseActivity {
             return mFragmentTitleList.get(position);
         }
     }
-
 }

@@ -2,10 +2,15 @@ package com.example.cvproject1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -221,9 +226,34 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         FirebaseListener.addReset(new Reset(locationAddress.getText() + "", subtotalMoney.getText() + "", UserHandler.getLoggedInUser().getUserPhone(), barcode), UserHandler.getLoggedInUser().getUserPhone());
         Cart.clearCart();
         Cart.writeTOSharedPreference(getApplicationContext());
+        pushNotification();
         finish();
     }
 
+
+    private void pushNotification(){
+        createNotificationChannel();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "PIZZA_SHOP_CHANNEL")
+                .setSmallIcon(R.drawable.ic_baseline_local_pizza_24)
+                .setContentTitle("Pizza Shop")
+                .setContentText("Your order is in processing now")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(0, builder.build());
+    }
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "PIZZA SHOP";
+            String description = "Channel of Pizza shop app";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("PIZZA_SHOP_CHANNEL", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
     private String getAlphaNumericString(int n)
     {
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
