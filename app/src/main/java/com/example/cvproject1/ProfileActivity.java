@@ -66,12 +66,6 @@ public class ProfileActivity extends BaseActivity {
         }
     }
 
-    public void submitUpdate(View view) {
-        String userMail = mail.getText() + "";
-        String userName = name.getText() + "";
-        String userPhone = phone.getText() + "";
-    }
-
     public void logout(View view) {
         UserHandler.logout(getApplicationContext());
         hideProfileView();

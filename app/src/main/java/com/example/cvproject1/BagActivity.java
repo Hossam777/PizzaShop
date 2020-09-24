@@ -16,6 +16,7 @@ public class BagActivity extends BaseActivity {
     private LinearLayoutManager lLayout;
     TextView itemCounter;
     TextView subtotalMoney;
+    TextView emptyBagText;
     double totalMoney = 0;
 
     @Override
@@ -26,19 +27,24 @@ public class BagActivity extends BaseActivity {
         activityName = "Cart";
 
         recyclerView = (RecyclerView) findViewById(R.id.bagRecycler);
-        lLayout = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(lLayout);
-        final ArrayList<FoodUnit> meals = Cart.getFoodList();
-        BagRecyclerViewCustomAdapter rcAdapter = new BagRecyclerViewCustomAdapter(this, meals);
-        recyclerView.setAdapter(rcAdapter);
+        emptyBagText = findViewById(R.id.emptyBagText);
         itemCounter = findViewById(R.id.itemCounter);
         subtotalMoney = findViewById(R.id.subtotalMoney);
+        lLayout = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(lLayout);
+        final ArrayList<FoodUnit> meals = Cart.getFoodList();
+        if(meals.size() == 0)
+            emptyBagText.setVisibility(View.VISIBLE);
+        BagRecyclerViewCustomAdapter rcAdapter = new BagRecyclerViewCustomAdapter(this, meals);
+        recyclerView.setAdapter(rcAdapter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         final ArrayList<FoodUnit> meals = Cart.getFoodList();
+        if(meals.size() == 0)
+            emptyBagText.setVisibility(View.VISIBLE);
         updateUI(meals);
         BagRecyclerViewCustomAdapter rcAdapter = new BagRecyclerViewCustomAdapter(this, meals);
         recyclerView.setAdapter(rcAdapter);
@@ -79,10 +85,12 @@ public class BagActivity extends BaseActivity {
 
     public void updateUI(ArrayList<FoodUnit> meals){
         totalMoney = 0;
+        if(meals.size() == 0)
+            emptyBagText.setVisibility(View.VISIBLE);
         for(FoodUnit meal : meals){
             totalMoney += meal.getPrice() * meal.getQuantity();
         }
         subtotalMoney.setText(totalMoney + "");
-        itemCounter.setText("(" + meals.size() + " Items)");
+        itemCounter.setText("(" + meals.size() + getString(R.string.items_string) + ")");
     }
 }

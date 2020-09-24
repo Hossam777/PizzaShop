@@ -9,6 +9,9 @@
         android:id="@+id/riceRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingLeft="@dimen/_5sdp"
+        android:paddingRight="@dimen/_5sdp"
+        android:paddingTop="@dimen/_5sdp"
         android:scrollbars="vertical"/>
 
 </FrameLayout>

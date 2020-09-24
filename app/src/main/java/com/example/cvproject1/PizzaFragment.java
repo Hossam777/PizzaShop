@@ -29,15 +29,8 @@ public class PizzaFragment extends Fragment {
         recyclerView = (RecyclerView) root.findViewById(R.id.pizzaRecycler);
         lLayout = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(lLayout);
-        FirebaseListener.getData("Food/Pizza", new FirebaseListener.MealsInterface() {
-            @Override
-            public void onDataChange(final ArrayList<FoodUnit> meals) {
-                if(meals != null){
-                    RecyclerViewCustomAdapter rcAdapter = new RecyclerViewCustomAdapter(getContext(), meals, BaseActivity.class);
-                    recyclerView.setAdapter(rcAdapter);
-                }
-            }
-        });
+        RecyclerViewCustomAdapter rcAdapter = new RecyclerViewCustomAdapter(getContext(), MealsHandler.getPizza(), BaseActivity.class);
+        recyclerView.setAdapter(rcAdapter);
         return root;
     }
 }

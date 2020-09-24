@@ -30,7 +30,7 @@
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:title="PIZZA"
+                    app:title="@string/pizza"
                     android:fitsSystemWindows="true"
                     app:layout_collapseMode="pin"
                     app:titleTextColor="@color/colorFourth"

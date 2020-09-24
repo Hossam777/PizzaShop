@@ -31,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!validateMail(s + "")){
-                    mail.setError("Wrong Mail");
+                    mail.setError(getString(R.string.wrong_mail_string));
                 }
             }
 
@@ -49,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!validatePass(s + "")){
-                    pass.setError("Password at least must be 8 Characters");
+                    pass.setError(getString(R.string.password_at_least_string));
                 }
             }
 
@@ -71,12 +71,12 @@ public class SignUpActivity extends AppCompatActivity {
                         @Override
                         public void onUserReceived(User user) {
                             if(user != null){
-                                phone.setError("This Phone is already SignedUp");
+                                phone.setError(getString(R.string.this_phone_already_string));
                             }
                         }
                     });
                 }else{
-                    phone.setError("Wrong Phone Number");
+                    phone.setError(getString(R.string.wrong_phone_number_string));
                 }
             }
 
@@ -94,7 +94,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!validateName(s + "")){
-                    name.setError("Name must be at least 2 Characters");
+                    name.setError(getString(R.string.name_must_be_string));
                 }
             }
 
@@ -120,7 +120,7 @@ public class SignUpActivity extends AppCompatActivity {
                 @Override
                 public void onUserReceived(User user) {
                     if(user != null){
-                        headWarningText.setText("Fix Issues First Please!");
+                        headWarningText.setText(R.string.fix_issues_string);
                     }else{
                         User newUser = new User(userName, userMail, userPass, userPhone);
                         FirebaseListener.addUser(newUser);
@@ -130,7 +130,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             });
         }else{
-            headWarningText.setText("Fill valid Data First Please!");
+            headWarningText.setText(R.string.fill_data_string);
         }
     }
 

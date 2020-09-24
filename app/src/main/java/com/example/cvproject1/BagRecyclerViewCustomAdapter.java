@@ -41,11 +41,11 @@ public class BagRecyclerViewCustomAdapter extends RecyclerView.Adapter<BagRecycl
             public void onClick(View v) {
                 Cart.removeFoodUnit(meals.get(position).getId());
                 Cart.writeTOSharedPreference(context);
+                meals.remove(position);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, getItemCount());
-                System.out.println(context);
                 ((BaseActivity) context).updateCartQuantity();
-                ((BaseActivity) context).showSnackBar("Item Removed");
+                ((BaseActivity) context).showSnackBar(context.getString(R.string.item_removed));
                 ((BagActivity)context).updateUI(meals);
             }
         });

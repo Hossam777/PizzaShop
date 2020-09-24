@@ -4,26 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HistoryActivity">
+    tools:context=".FavouritesActivity">
+
 
     <TextView
+        android:id="@+id/emptyBagText"
         android:layout_marginTop="@dimen/_60sdp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/favRecycler"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/_15sdp"
-        android:text="@string/you_better_hurry_and_order_now"
+        android:text="@string/we_are_sure_you_will_like_something"
         android:textColor="@color/colorFourth"
         android:background="@color/colorSecondary"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/historyRecycler"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:id="@+id/favRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/_5sdp"
         android:paddingRight="@dimen/_5sdp"
         android:paddingTop="@dimen/_5sdp"
-        android:scrollbars="vertical"/>
+        android:paddingBottom="@dimen/_60sdp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

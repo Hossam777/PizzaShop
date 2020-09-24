@@ -29,15 +29,8 @@ public class PastaFragment extends Fragment {
         recyclerView = (RecyclerView) root.findViewById(R.id.pastaRecycler);
         lLayout = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(lLayout);
-        FirebaseListener.getData("Food/Pasta", new FirebaseListener.MealsInterface() {
-            @Override
-            public void onDataChange(final ArrayList<FoodUnit> meals) {
-                if(meals != null){
-                    RecyclerViewCustomAdapter rcAdapter = new RecyclerViewCustomAdapter(getContext(), meals, BaseActivity.class);
-                    recyclerView.setAdapter(rcAdapter);
-                }
-            }
-        });
+        RecyclerViewCustomAdapter rcAdapter = new RecyclerViewCustomAdapter(getContext(), MealsHandler.getPasta(), BaseActivity.class);
+        recyclerView.setAdapter(rcAdapter);
         return root;
     }
 }

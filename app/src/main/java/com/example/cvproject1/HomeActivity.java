@@ -6,6 +6,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.widget.Toast;
+
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -15,7 +18,7 @@ public class HomeActivity extends BaseActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +29,36 @@ public class HomeActivity extends BaseActivity {
 
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (MealsHandler.getPizza().size() == 0 || MealsHandler.getPasta().size() == 0 || MealsHandler.getRice().size() == 0){
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        setupViewPager();
+                    }
+                });
+            }
+        }).start();
     }
+
 
     @Override
     protected void onResume() {
         super.onResume();
         updateCartQuantity();
+        setupViewPager();
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PizzaFragment(), "Pizza");
-        adapter.addFragment(new PastaFragment(), "Pasta");
-        adapter.addFragment(new RiceFragment(), "Rice");
+        adapter.addFragment(new PizzaFragment(), getString(R.string.pizza));
+        adapter.addFragment(new PastaFragment(), getString(R.string.pasta));
+        adapter.addFragment(new RiceFragment(), getString(R.string.rice));
         viewPager.setAdapter(adapter);
     }
     class ViewPagerAdapter extends FragmentPagerAdapter {

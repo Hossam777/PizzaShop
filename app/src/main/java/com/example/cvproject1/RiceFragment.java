@@ -29,15 +29,8 @@ public class RiceFragment extends Fragment {
         recyclerView = (RecyclerView) root.findViewById(R.id.riceRecycler);
         lLayout = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(lLayout);
-        FirebaseListener.getData("Food/Rice", new FirebaseListener.MealsInterface() {
-            @Override
-            public void onDataChange(final ArrayList<FoodUnit> meals) {
-                if(meals != null){
-                    RecyclerViewCustomAdapter rcAdapter = new RecyclerViewCustomAdapter(getContext(), meals, BaseActivity.class);
-                    recyclerView.setAdapter(rcAdapter);
-                }
-            }
-        });
+        RecyclerViewCustomAdapter rcAdapter = new RecyclerViewCustomAdapter(getContext(), MealsHandler.getRice(), BaseActivity.class);
+        recyclerView.setAdapter(rcAdapter);
         return root;
     }
 }

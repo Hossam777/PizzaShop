@@ -44,6 +44,7 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
         recyclerView = findViewById(R.id.searchRecycler);
         lLayout = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(lLayout);
@@ -131,31 +132,9 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
     private void fillAllMealsArray() {
-        FirebaseListener.getData("Food/Pizza", new FirebaseListener.MealsInterface() {
-            @Override
-            public void onDataChange(final ArrayList<FoodUnit> meals) {
-                if(meals != null){
-                    allMeals.addAll(meals);
-                }
-            }
-        });
-        FirebaseListener.getData("Food/Pasta", new FirebaseListener.MealsInterface() {
-            @Override
-            public void onDataChange(final ArrayList<FoodUnit> meals) {
-                if(meals != null){
-                    allMeals.addAll(meals);
-                }
-            }
-        });
-        FirebaseListener.getData("Food/Rice", new FirebaseListener.MealsInterface() {
-            @Override
-            public void onDataChange(final ArrayList<FoodUnit> meals) {
-                if(meals != null){
-                    allMeals.addAll(meals);
-                    filterMeals();
-                }
-            }
-        });
+        allMeals.addAll(MealsHandler.getPizza());
+        allMeals.addAll(MealsHandler.getPasta());
+        allMeals.addAll(MealsHandler.getRice());
     }
 
     private void updateRecycleView(ArrayList<FoodUnit> meals){

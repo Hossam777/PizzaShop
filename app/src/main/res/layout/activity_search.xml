@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/search_text"
-            android:hint="Name"
+            android:hint="@string/name"
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="@dimen/_17sdp"
@@ -38,7 +38,7 @@
             <RadioButton
                 android:paddingLeft="@dimen/_12sdp"
                 android:paddingRight="@dimen/_12sdp"
-                android:textSize="@dimen/_17sdp"
+                android:textSize="@dimen/_15sdp"
                 android:background="@drawable/food_type_radiobtn"
                 android:checked="true"
                 android:textColor="@color/colorFourth"
@@ -47,46 +47,46 @@
                 android:id="@+id/allRadioButton"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="wrap_content"
-                android:text="ALL" />
+                android:text="@string/all" />
 
             <RadioButton
                 android:paddingLeft="@dimen/_12sdp"
                 android:paddingRight="@dimen/_12sdp"
                 android:background="@drawable/food_type_radiobtn"
                 android:gravity="center"
-                android:textSize="@dimen/_17sdp"
+                android:textSize="@dimen/_15sdp"
                 android:textColor="@color/colorFourth"
                 android:button="@null"
                 android:id="@+id/pizzaRadioButton"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="wrap_content"
-                android:text="Pizza" />
+                android:text="@string/pizza" />
 
             <RadioButton
                 android:paddingLeft="@dimen/_12sdp"
                 android:paddingRight="@dimen/_12sdp"
                 android:background="@drawable/food_type_radiobtn"
                 android:gravity="center"
-                android:textSize="@dimen/_17sdp"
+                android:textSize="@dimen/_15sdp"
                 android:button="@null"
                 android:textColor="@color/colorFourth"
                 android:id="@+id/pastaRadioButton"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="wrap_content"
-                android:text="Pasta" />
+                android:text="@string/pasta" />
 
             <RadioButton
                 android:paddingLeft="@dimen/_12sdp"
                 android:paddingRight="@dimen/_12sdp"
                 android:background="@drawable/food_type_radiobtn"
                 android:gravity="center"
-                android:textSize="@dimen/_17sdp"
+                android:textSize="@dimen/_15sdp"
                 android:textColor="@color/colorFourth"
                 android:button="@null"
                 android:id="@+id/riceRadioButton"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="wrap_content"
-                android:text="Rice" />
+                android:text="@string/rice" />
         </RadioGroup>
         <LinearLayout
             android:layout_marginTop="@dimen/_5sdp"
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_14sdp"
                 android:textColor="@color/colorFourth"
-                android:text="Minimum Rating: "/>
+                android:text="@string/minimum_rating"/>
             <NumberPicker
                 android:id="@+id/ratingNumberPicker"
                 android:layout_width="wrap_content"
@@ -122,7 +122,10 @@
             android:layout_marginTop="@dimen/_33sdp"
             android:id="@+id/searchRecycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/_5sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:paddingTop="@dimen/_5sdp"/>
         <ImageView
             android:id="@+id/search_settings_icon"
             android:layout_marginRight="@dimen/_5sdp"

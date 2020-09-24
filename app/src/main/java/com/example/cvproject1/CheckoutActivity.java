@@ -162,7 +162,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         tomtomMap.centerOn(new CameraPosition(currentLocation, 17, 0, MapConstants.ORIENTATION_NORTH, 1500));
         MarkerBuilder markerBuilder = new MarkerBuilder(currentLocation)
                 .icon(Icon.Factory.fromResources(getApplicationContext(), R.drawable.location_icon))
-                .markerBalloon(new SimpleMarkerBalloon("Drag to your Location"))
+                .markerBalloon(new SimpleMarkerBalloon(getString(R.string.drag_string)))
                 .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
                 .decal(true)
                 .draggable(true); //By default is false

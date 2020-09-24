@@ -1,10 +1,10 @@
 package com.example.cvproject1;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +40,11 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
         holder.description.setText(meals.get(position).getDescription());
         holder.price.setText(meals.get(position).getPrice() + "$");
         holder.rating.setText(meals.get(position).getRating() + "");
+        holder.favbtn.setOnCheckedChangeListener(null);
+        holder.favbtn.setChecked(false);
+        if(UserHandler.checkInFavourites(meals.get(position).getId())){
+            holder.favbtn.setChecked(true);
+        }
         holder.buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,9 +52,26 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
                 Cart.writeTOSharedPreference(context);
                 if(activityClass == BaseActivity.class){
                     ((BaseActivity) context).updateCartQuantity();
-                    ((BaseActivity) context).showSnackBar("Item Added to Cart");
+                    ((BaseActivity) context).showSnackBar(context.getString(R.string.ItemAddedtoCart_string));
                 }else if(activityClass == SearchActivity.class){
-                    ((SearchActivity) context).showSnackBar("Item Added to Cart");
+                    ((SearchActivity) context).showSnackBar(context.getString(R.string.ItemAddedtoCart_string));
+                }
+            }
+        });
+        holder.favbtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    UserHandler.addToFavourites(meals.get(position).getId());
+                    UserHandler.updateUserFavouritesInSharedPreference(context);
+                }else{
+                    UserHandler.removeFromFavourites(meals.get(position).getId());
+                    UserHandler.updateUserFavouritesInSharedPreference(context);
+                    if(activityClass == FavouritesActivity.class){
+                        meals.remove(position);
+                        notifyItemRemoved(position);
+                        notifyItemRangeChanged(position, getItemCount());
+                    }
                 }
             }
         });

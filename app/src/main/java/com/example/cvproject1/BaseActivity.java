@@ -7,9 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.net.InetAddress;
+import java.util.ArrayList;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -39,6 +38,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void onCreateDrawer() {
         setContentView(R.layout.activity_base);
+        loadMeals();
         toolbar = findViewById(R.id.topAppBar);
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
@@ -55,7 +55,7 @@ public class BaseActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             }
         });
-        if(UserHandler.loadUserDataIfLoggedIn(getApplicationContext())){
+        if(UserHandler.loadUserData(getApplicationContext())){
             userTextName.setText(UserHandler.getLoggedInUser().getUserName().toUpperCase());
         }
         cartQuantity.setText(Cart.getFoodList().size() + "");
@@ -83,22 +83,26 @@ public class BaseActivity extends AppCompatActivity {
                 if(item.getTitle().equals(activityName)){
                     drawerLayout.closeDrawer(GravityCompat.START);
                     return false;
-                }else if(item.getTitle().equals("Shop")){
+                }else if(item.getItemId() == R.id.shopItem){
                     finish();
                     return false;
-                }else if(item.getTitle().equals("Cart")){
+                }else if(item.getItemId() == R.id.cartItem){
                     startActivity(new Intent(getApplicationContext(), BagActivity.class));
-                }else if(item.getTitle().equals("History")){
+                }else if(item.getItemId() == R.id.historyItem){
                     startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
-                }else if(item.getTitle().equals("Profile")){
+                }else if(item.getItemId() == R.id.profileItem){
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                }else if(item.getItemId() == R.id.favItem){
+                    startActivity(new Intent(getApplicationContext(), FavouritesActivity.class));
+                }else if(item.getItemId() == R.id.settingsItem){
+                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                 }
                 if(!activityName.equals("Shop"))
                     finish();
                 return false;
             }
         });
-        if(UserHandler.loadUserDataIfLoggedIn(getApplicationContext())){
+        if(UserHandler.loadUserData(getApplicationContext())){
             ((TextView)navigationView.getHeaderView(0).findViewById(R.id.navigationDrawerHeaderUserName)).setText(UserHandler.getLoggedInUser().getUserName().toUpperCase());
         }
         viewStub = findViewById(R.id.content_frame);
@@ -113,6 +117,32 @@ public class BaseActivity extends AppCompatActivity {
     public void showSnackBar(String message) {
         Snackbar snackbar = Snackbar.make(drawerLayout, message, Snackbar.LENGTH_LONG);
         snackbar.show();
+    }
+    private void loadMeals(){
+        FirebaseListener.getData("Food/Pizza", new FirebaseListener.MealsInterface() {
+            @Override
+            public void onDataChange(final ArrayList<FoodUnit> meals) {
+                if(meals != null){
+                    MealsHandler.setPizza(meals);
+                }
+            }
+        });
+        FirebaseListener.getData("Food/Pasta", new FirebaseListener.MealsInterface() {
+            @Override
+            public void onDataChange(final ArrayList<FoodUnit> meals) {
+                if(meals != null){
+                    MealsHandler.setPasta(meals);
+                }
+            }
+        });
+        FirebaseListener.getData("Food/Rice", new FirebaseListener.MealsInterface() {
+            @Override
+            public void onDataChange(final ArrayList<FoodUnit> meals) {
+                if(meals != null){
+                    MealsHandler.setRice(meals);
+                }
+            }
+        });
     }
     static boolean isNetworkConnected() {
         try {
