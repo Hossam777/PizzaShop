@@ -49,4 +49,9 @@
     <string name="please_login">Please login first</string>
     <string name="please_select_food">Please select food from shop menu first</string>
     <string name="edit_profile_string">Edit Profile</string>
+    <string name="logout">Logout</string>
+    <string name="confirm_phone_number">Confirm Phone Number</string>
+    <string name="code">Code</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="verify_phone_string">Verify phone number first please!</string>
 </resources>

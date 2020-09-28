@@ -1,12 +1,11 @@
 package com.example.cvproject1;
 
-import android.content.Context;
-
 public class User {
     String userName;
     String userMail;
     String userPass;
     String userPhone;
+    Boolean phoneVerified;
 
     public User() {
     }
@@ -17,13 +16,23 @@ public class User {
         userMail = cuttingNow[1];
         userPass = cuttingNow[2];
         userPhone = cuttingNow[3];
+        phoneVerified = Boolean.parseBoolean(cuttingNow[4]);
     }
 
-    public User(String userName, String userMail, String userPass, String userPhone) {
+    public User(String userName, String userMail, String userPass, String userPhone, Boolean phoneVerified) {
         this.userName = userName;
         this.userMail = userMail;
         this.userPass = userPass;
         this.userPhone = userPhone;
+        this.phoneVerified = phoneVerified;
+    }
+
+    public Boolean getPhoneVerified() {
+        return phoneVerified;
+    }
+
+    public void setPhoneVerified(Boolean phoneVerified) {
+        this.phoneVerified = phoneVerified;
     }
 
     public String getUserName() {
@@ -62,6 +71,7 @@ public class User {
         return  userName + "'$'" +
                 userMail + "'$'" +
                 userPass + "'$'" +
-                userPhone;
+                userPhone + "'$'" +
+                phoneVerified;
     }
 }

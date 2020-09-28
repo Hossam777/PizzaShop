@@ -89,6 +89,20 @@ public class BagActivity extends BaseActivity {
                 }
             });
             customAlertDialog.show();
+        }else if(!UserHandler.getLoggedInUser().getPhoneVerified()){
+            CustomAlertDialog customAlertDialog = new CustomAlertDialog(this, getString(R.string.cant_check_out), getString(R.string.verify_phone_string), "Verify", new CustomAlertDialog.CallbackPositive() {
+                @Override
+                public void doPositive() {
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    finish();
+                }
+
+                @Override
+                public void doNegative() {
+
+                }
+            });
+            customAlertDialog.show();
         }else{
             startActivity(new Intent(getApplicationContext(), CheckoutActivity.class).putExtra("totalMoney", totalMoney));
         }

@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/pizza_rounded"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".PhoneNumberVerificationActivity"></activity>
+        <activity android:name=".SettingsActivity" />
         <activity android:name=".FavouritesActivity" />
         <activity android:name=".HistoryActivity" />
 

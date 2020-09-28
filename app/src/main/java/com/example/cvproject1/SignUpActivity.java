@@ -123,7 +123,7 @@ public class SignUpActivity extends AppCompatActivity {
                     if(user != null){
                         headWarningText.setText(R.string.fix_issues_string);
                     }else{
-                        User newUser = new User(userName, userMail, userPass, userPhone);
+                        User newUser = new User(userName, userMail, userPass, userPhone, false);
                         FirebaseListener.addUser(newUser);
                         UserHandler.logIn(getApplicationContext(), newUser);
                         finish();

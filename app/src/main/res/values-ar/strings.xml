@@ -49,4 +49,7 @@
     <string name="please_login">من فضلك سجل دخول اولاّ</string>
     <string name="please_select_food">من فضلك اختار الوجبات اولا</string>
     <string name="edit_profile_string">تعدبل البيانات</string>
+    <string name="code">Code</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="verify_phone_string">Verify phone number first please!</string>
 </resources>
