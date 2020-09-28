@@ -12,7 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:text="@string/address"
             android:textSize="@dimen/_9sdp"/>
         <TextView
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/addressText"
-            app:layout_constraintLeft_toLeftOf="@+id/addressText"
+            app:layout_constraintRight_toRightOf="@+id/addressText"
             android:text="Location Address"
             android:textSize="@dimen/_12sdp"
             android:gravity="center"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/phone"
+            app:layout_constraintRight_toRightOf="@+id/phone"
             android:text="@string/phone"
             android:textSize="@dimen/_9sdp"/>
         <TextView
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/addressText"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:textSize="@dimen/_12sdp"
             android:gravity="center"
             android:text="01000000000"
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/locationAddress"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:text="@string/bar_code"
             android:textSize="@dimen/_9sdp"/>
         <TextView
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/barCodeText"
-            app:layout_constraintLeft_toLeftOf="@+id/addressText"
+            app:layout_constraintRight_toRightOf="@+id/addressText"
             android:text="CMT81975"
             android:textSize="@dimen/_12sdp"
             android:gravity="center"
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/phone"
-            app:layout_constraintLeft_toLeftOf="@+id/phone"
+            app:layout_constraintRight_toRightOf="@+id/phone"
             android:text="@string/est"
             android:textSize="@dimen/_9sdp"/>
         <TextView
@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/estText"
-            app:layout_constraintLeft_toLeftOf="@+id/phone"
+            app:layout_constraintRight_toRightOf="@+id/phone"
             android:textSize="@dimen/_12sdp"
             android:gravity="center"
             android:text="07:30 pm"
@@ -97,7 +97,7 @@
             android:id="@+id/subtotalText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline"
             android:text="@string/subtotal"
             android:textSize="@dimen/_27sdp"
@@ -106,16 +106,16 @@
             android:id="@+id/subtotalMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_10sdp"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/subtotalText"
+            android:layout_marginLeft="@dimen/_10sdp"
             android:text="48.0"
             android:textSize="@dimen/_25sdp"
             android:textColor="@color/colorFourth"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@+id/subtotalMoney"
+            app:layout_constraintRight_toLeftOf="@+id/subtotalMoney"
             app:layout_constraintTop_toTopOf="@+id/subtotalMoney"
             android:text="$"
             android:textColor="@color/colorFourth"/>

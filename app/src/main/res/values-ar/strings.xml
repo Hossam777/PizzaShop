@@ -45,4 +45,8 @@
     <string name="arabic">عربى</string>
     <string name="english">انجليزى</string>
     <string name="user">مستخدم</string>
+    <string name="cant_check_out">لا يمكن الطلب</string>
+    <string name="please_login">من فضلك سجل دخول اولاّ</string>
+    <string name="please_select_food">من فضلك اختار الوجبات اولا</string>
+    <string name="edit_profile_string">تعدبل البيانات</string>
 </resources>

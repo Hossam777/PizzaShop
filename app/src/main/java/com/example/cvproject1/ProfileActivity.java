@@ -1,5 +1,6 @@
 package com.example.cvproject1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +44,9 @@ public class ProfileActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         super.onCreateDrawer();
         super.updateView(R.layout.activity_profile);
-        activityName = "Profile";
+        activityID = R.id.profileItem;
+        toolbar.setTitle(getString(R.string.profile_string));
+
         mail = findViewById(R.id.mail);
         name = findViewById(R.id.name);
         phone = findViewById(R.id.phone);
@@ -77,5 +80,13 @@ public class ProfileActivity extends BaseActivity {
 
     public void signUp(View view) {
         startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LanguageLocaleHelper.onAttach(newBase));
+    }
+
+    public void editProfile(View view) {
     }
 }

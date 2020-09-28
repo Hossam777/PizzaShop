@@ -15,6 +15,7 @@ public class HistoryRecyclerViewHolder extends RecyclerView.ViewHolder {
     TextView subtotalMoney;
     TextView phone;
     TextView barCode;
+    TextView dateTime;
     public HistoryRecyclerViewHolder(@NonNull View itemView) {
         super(itemView);
 
@@ -22,5 +23,6 @@ public class HistoryRecyclerViewHolder extends RecyclerView.ViewHolder {
         subtotalMoney = itemView.findViewById(R.id.subtotalMoney);
         phone = itemView.findViewById(R.id.phone);
         barCode = itemView.findViewById(R.id.barCode);
+        dateTime = itemView.findViewById(R.id.estTime);
     }
 }

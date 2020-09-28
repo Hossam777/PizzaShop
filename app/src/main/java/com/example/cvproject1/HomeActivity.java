@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -22,10 +23,17 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(null);
         super.onCreateDrawer();
         super.updateView(R.layout.activity_home);
-        activityName = "Shop";
+        activityID = R.id.shopItem;
+        toolbar.setTitle(getString(R.string.shop_string));
+         langChanged = false;
+        if(LanguageLocaleHelper.getLanguage(getApplicationContext()).equals("ar"))
+            foodLink = "Food-ar";
+        else
+            foodLink = "Food";
+        loadMeals();
 
         ProgressDialog progress = new ProgressDialog(this);
         progress.setMessage("Downloading");
@@ -52,10 +60,13 @@ public class HomeActivity extends BaseActivity {
         }).start();
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
+        if(langChanged){
+            langChanged = false;
+            recreate();
+        }
         updateCartQuantity();
         setupViewPager();
     }
@@ -94,5 +105,10 @@ public class HomeActivity extends BaseActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LanguageLocaleHelper.onAttach(newBase));
     }
 }

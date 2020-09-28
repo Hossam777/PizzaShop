@@ -7,16 +7,26 @@ public class Reset {
     String subtotalMoney;
     String phone;
     String barCode;
+    String dateTime;
 
 
-    public Reset(String locationAddress, String subtotalMoney, String phone, String barCode) {
+    public Reset(String locationAddress, String subtotalMoney, String phone, String barCode, String dateTime) {
         this.locationAddress = locationAddress;
         this.subtotalMoney = subtotalMoney;
         this.phone = phone;
         this.barCode = barCode;
+        this.dateTime = dateTime;
     }
 
     public Reset(){}
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
 
     public String getBarCode() {
         return barCode;

@@ -11,13 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     ArrayList<FoodUnit> meals;
     Class activityClass;
     private LayoutInflater mInflater;
     Context context;
+    NumberFormat numberFormat;
     public RecyclerViewCustomAdapter(Context context, ArrayList<FoodUnit> meals, Class activityClass) {
         this.context = context;
         this.mInflater = LayoutInflater.from(context);
@@ -28,7 +31,15 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.foodcard, parent, false);
+        View layoutView;
+        if(LanguageLocaleHelper.getLanguage(context).equals("ar")){
+            layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.foodcard_rtl, parent, false);
+            numberFormat = NumberFormat.getInstance(new Locale("ar"));
+        }
+        else{
+            layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.foodcard, parent, false);
+            numberFormat = NumberFormat.getInstance(new Locale("en","US"));
+        }
         RecyclerViewHolder rcv = new RecyclerViewHolder(layoutView);
         return rcv;
     }
@@ -38,8 +49,8 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
         Picasso.get().load(meals.get(position).getLink()).into(holder.foodImage);
         holder.name.setText(meals.get(position).getName());
         holder.description.setText(meals.get(position).getDescription());
-        holder.price.setText(meals.get(position).getPrice() + "$");
-        holder.rating.setText(meals.get(position).getRating() + "");
+        holder.price.setText(numberFormat.format(meals.get(position).getPrice()) + "$");
+        holder.rating.setText(numberFormat.format(meals.get(position).getRating()));
         holder.favbtn.setOnCheckedChangeListener(null);
         holder.favbtn.setChecked(false);
         if(UserHandler.checkInFavourites(meals.get(position).getId())){

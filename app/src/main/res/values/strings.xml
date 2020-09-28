@@ -45,4 +45,8 @@
     <string name="arabic">arabic</string>
     <string name="english">English</string>
     <string name="user">user</string>
+    <string name="cant_check_out">Can\'t Checkout</string>
+    <string name="please_login">Please login first</string>
+    <string name="please_select_food">Please select food from shop menu first</string>
+    <string name="edit_profile_string">Edit Profile</string>
 </resources>

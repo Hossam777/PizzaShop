@@ -8,6 +8,7 @@ import androidx.core.app.NotificationManagerCompat;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.location.Location;
 import android.os.Build;
@@ -223,7 +224,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     public void confirmBtn(View view) {
-        FirebaseListener.addReset(new Reset(locationAddress.getText() + "", subtotalMoney.getText() + "", UserHandler.getLoggedInUser().getUserPhone(), barcode), UserHandler.getLoggedInUser().getUserPhone());
+        FirebaseListener.addReset(new Reset(locationAddress.getText() + "", subtotalMoney.getText() + "", UserHandler.getLoggedInUser().getUserPhone(), barcode, estTime.getText() + ""), UserHandler.getLoggedInUser().getUserPhone());
         Cart.clearCart();
         Cart.writeTOSharedPreference(getApplicationContext());
         pushNotification();
@@ -269,4 +270,8 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         return sb.toString();
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LanguageLocaleHelper.onAttach(newBase));
+    }
 }

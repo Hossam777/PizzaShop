@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.LayoutTransition;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -169,5 +170,9 @@ public class SearchActivity extends AppCompatActivity {
     public void showSnackBar(String message) {
         Snackbar snackbar = Snackbar.make(android_search_ConstraintLayout, message, Snackbar.LENGTH_LONG);
         snackbar.show();
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LanguageLocaleHelper.onAttach(newBase));
     }
 }

@@ -3,12 +3,15 @@ package com.example.cvproject1;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class BagActivity extends BaseActivity {
 
@@ -18,13 +21,21 @@ public class BagActivity extends BaseActivity {
     TextView subtotalMoney;
     TextView emptyBagText;
     double totalMoney = 0;
+    NumberFormat numberFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.onCreateDrawer();
         super.updateView(R.layout.activity_bag);
-        activityName = "Cart";
+        activityID = R.id.cartItem;
+        toolbar.setTitle(getString(R.string.cart_string));
+        if(LanguageLocaleHelper.getLanguage(getApplicationContext()).equals("ar")) {
+            numberFormat = NumberFormat.getInstance(new Locale("ar"));
+        }
+        else {
+            numberFormat = NumberFormat.getInstance(new Locale("en","US"));
+        }
 
         recyclerView = (RecyclerView) findViewById(R.id.bagRecycler);
         emptyBagText = findViewById(R.id.emptyBagText);
@@ -52,7 +63,7 @@ public class BagActivity extends BaseActivity {
 
     public void checkOut(View view){
         if(!UserHandler.isUserLoggedIn()){
-            CustomAlertDialog customAlertDialog = new CustomAlertDialog(this, "Can't Checkout", "Please login first", "Login", new CustomAlertDialog.CallbackPositive() {
+            CustomAlertDialog customAlertDialog = new CustomAlertDialog(this, getString(R.string.cant_check_out), getString(R.string.please_login), "Login", new CustomAlertDialog.CallbackPositive() {
                 @Override
                 public void doPositive() {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
@@ -66,7 +77,7 @@ public class BagActivity extends BaseActivity {
             });
             customAlertDialog.show();
         }else if(totalMoney == 0){
-            CustomAlertDialog customAlertDialog = new CustomAlertDialog(this, "Can't Checkout", "Please select food from shop menu first", "Shop", new CustomAlertDialog.CallbackPositive() {
+            CustomAlertDialog customAlertDialog = new CustomAlertDialog(this, getString(R.string.cant_check_out), getString(R.string.please_select_food), "Shop", new CustomAlertDialog.CallbackPositive() {
                 @Override
                 public void doPositive() {
                     finish();
@@ -90,7 +101,11 @@ public class BagActivity extends BaseActivity {
         for(FoodUnit meal : meals){
             totalMoney += meal.getPrice() * meal.getQuantity();
         }
-        subtotalMoney.setText(totalMoney + "");
-        itemCounter.setText("(" + meals.size() + getString(R.string.items_string) + ")");
+        subtotalMoney.setText(numberFormat.format(totalMoney));
+        itemCounter.setText("(" + numberFormat.format(meals.size()) + getString(R.string.items_string) + ")");
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LanguageLocaleHelper.onAttach(newBase));
     }
 }

@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,13 +23,15 @@ import java.util.ArrayList;
 
 public class BaseActivity extends AppCompatActivity {
 
-    protected String activityName;
+    protected int activityID;
     protected DrawerLayout drawerLayout;
     protected Toolbar toolbar;
     protected NavigationView navigationView;
     protected TextView cartQuantity;
     protected ViewStub viewStub;
     protected TextView userTextName;
+    static protected boolean langChanged;
+    protected static String foodLink = "Food";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -38,7 +41,6 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void onCreateDrawer() {
         setContentView(R.layout.activity_base);
-        loadMeals();
         toolbar = findViewById(R.id.topAppBar);
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
@@ -62,7 +64,7 @@ public class BaseActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if(item.getItemId() == R.id.actionbar_cart && !activityName.equals("Cart")){
+                if(item.getItemId() == R.id.actionbar_cart && !(activityID == R.id.cartItem)){
                     startActivity(new Intent(getApplicationContext(), BagActivity.class));
                 }else if(item.getItemId() == R.id.actionbar_searchID){
                     startActivity(new Intent(getApplicationContext(), SearchActivity.class));
@@ -80,7 +82,7 @@ public class BaseActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 drawerLayout.closeDrawers();
-                if(item.getTitle().equals(activityName)){
+                if(item.getItemId() == activityID){
                     drawerLayout.closeDrawer(GravityCompat.START);
                     return false;
                 }else if(item.getItemId() == R.id.shopItem){
@@ -97,7 +99,7 @@ public class BaseActivity extends AppCompatActivity {
                 }else if(item.getItemId() == R.id.settingsItem){
                     startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                 }
-                if(!activityName.equals("Shop"))
+                if(!(activityID == R.id.shopItem))
                     finish();
                 return false;
             }
@@ -118,8 +120,9 @@ public class BaseActivity extends AppCompatActivity {
         Snackbar snackbar = Snackbar.make(drawerLayout, message, Snackbar.LENGTH_LONG);
         snackbar.show();
     }
-    private void loadMeals(){
-        FirebaseListener.getData("Food/Pizza", new FirebaseListener.MealsInterface() {
+    protected void loadMeals(){
+        MealsHandler.clearData();
+        FirebaseListener.getData(foodLink + "/" + "Pizza", new FirebaseListener.MealsInterface() {
             @Override
             public void onDataChange(final ArrayList<FoodUnit> meals) {
                 if(meals != null){
@@ -127,7 +130,7 @@ public class BaseActivity extends AppCompatActivity {
                 }
             }
         });
-        FirebaseListener.getData("Food/Pasta", new FirebaseListener.MealsInterface() {
+        FirebaseListener.getData(foodLink + "/" + "Pasta", new FirebaseListener.MealsInterface() {
             @Override
             public void onDataChange(final ArrayList<FoodUnit> meals) {
                 if(meals != null){
@@ -135,7 +138,7 @@ public class BaseActivity extends AppCompatActivity {
                 }
             }
         });
-        FirebaseListener.getData("Food/Rice", new FirebaseListener.MealsInterface() {
+        FirebaseListener.getData(foodLink + "/" + "Rice", new FirebaseListener.MealsInterface() {
             @Override
             public void onDataChange(final ArrayList<FoodUnit> meals) {
                 if(meals != null){
@@ -153,5 +156,10 @@ public class BaseActivity extends AppCompatActivity {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LanguageLocaleHelper.onAttach(newBase));
     }
 }

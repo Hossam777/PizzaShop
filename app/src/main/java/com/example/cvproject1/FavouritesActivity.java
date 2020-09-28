@@ -3,6 +3,7 @@ package com.example.cvproject1;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -18,7 +19,8 @@ public class FavouritesActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         super.onCreateDrawer();
         super.updateView(R.layout.activity_favourites);
-        activityName = "Favourites";
+        activityID = R.id.favItem;
+        toolbar.setTitle(getString(R.string.favourites));
 
         recyclerView = findViewById(R.id.favRecycler);
         lLayout = new LinearLayoutManager(getApplicationContext());
@@ -43,5 +45,9 @@ public class FavouritesActivity extends BaseActivity {
         }
         RecyclerViewCustomAdapter rcAdapter = new RecyclerViewCustomAdapter(this, meals, FavouritesActivity.class);
         recyclerView.setAdapter(rcAdapter);
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LanguageLocaleHelper.onAttach(newBase));
     }
 }

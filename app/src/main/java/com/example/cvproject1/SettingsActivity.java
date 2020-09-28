@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
+
 public class SettingsActivity extends BaseActivity {
 
     ToggleButton langToggleBtn;
@@ -14,15 +15,17 @@ public class SettingsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         super.onCreateDrawer();
         super.updateView(R.layout.settings_activity);
-        activityName = "Settings";
+        activityID = R.id.settingsItem;
+        toolbar.setTitle(getString(R.string.settings));
 
         langToggleBtn = findViewById(R.id.langToggleBtn);
-        if(LanguageLocaleHelper.getLanguage(getApplicationContext()).equals("ar")){
+        if(LanguageLocaleHelper.getLanguage(getApplicationContext()).equals("en")){
             langToggleBtn.setChecked(true);
         }
         langToggleBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                langChanged = true;
                 switch (LanguageLocaleHelper.getLanguage(getApplicationContext())){
                     case "en":
                         LanguageLocaleHelper.setLocale(getApplicationContext(), "ar");
@@ -39,4 +42,5 @@ public class SettingsActivity extends BaseActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LanguageLocaleHelper.onAttach(newBase));
     }
+
 }

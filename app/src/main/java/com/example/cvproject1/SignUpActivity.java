@@ -2,6 +2,7 @@ package com.example.cvproject1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -171,5 +172,9 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LanguageLocaleHelper.onAttach(newBase));
     }
 }
